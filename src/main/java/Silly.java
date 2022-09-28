@@ -79,6 +79,14 @@ public class Silly implements Comparable<Silly>{
      *       strings (e.g. this.name = [first string] + [second string]).
      *       Make sure you document this method!
      */
+    /**
+     * Creates a new Silly object.
+     * This constructor takes in two ints as arguments
+     *
+     * @param continent the continent of this Silly instance.
+     * @param country the country for this Silly instance's name.
+     */
+    public Silly(String continent, String country) {this.name = continent + country;}
 
 
 
@@ -96,7 +104,7 @@ public class Silly implements Comparable<Silly>{
          */
         Silly first_version = new Silly("single str name");
         Silly second_version = new Silly(5);
-        Silly third_version = new Silly("first", "second");
+        Silly third_version = new Silly("Asia", "Turkmenistan");
 
         System.out.println("Silly 1: " + first_version);
         System.out.println("Silly 2: " + second_version);
@@ -116,7 +124,7 @@ public class Silly implements Comparable<Silly>{
         y.countStatic();
         x.countStatic();
         x.countStatic();
-        int[] expected_values = {};
+        int[] expected_values = {0, 1, 2, 3};
 
         System.out.println("The countStatic calls will return " + Arrays.toString(expected_values));
     }
@@ -134,6 +142,7 @@ public class Silly implements Comparable<Silly>{
     @Override
     public String toString(){
         // TODO (Task 3): Implement the body of this method!
+        return this.name;
     }
 
     /**
@@ -161,6 +170,8 @@ public class Silly implements Comparable<Silly>{
 
         // Hint: to compare strings, we need to use .equals()
         //       e.g. s1.equals(s2)
+        if (this.name.equals(other.name)){return true;}
+        return false;
     }
 
     /**
@@ -194,6 +205,15 @@ public class Silly implements Comparable<Silly>{
          *                You can get the length of a string by using the
          *                .length() method.
          */
+        if (this.name.length() > other.name.length()) {
+            return 1;
+        } else if (this.name.length() < other.name.length()) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
     }
 
     /*
@@ -205,5 +225,4 @@ public class Silly implements Comparable<Silly>{
      *                If the tests don't pass, look at the results and revise
      *                accordingly.
      */
-}
 
